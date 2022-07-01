@@ -5,7 +5,7 @@ description = ""
 authors = ["Yannick Aaron Lehr <yannick.lehr@ioki.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10.3"
+python = "^3.9"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.18.1"
