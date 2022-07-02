@@ -1,38 +1,26 @@
-# Python default project
+# Pytorch M1 GPU vs CPU Benchmark
 
-## Prerequisites
+System: M1 MAX GPU
 
-### Install Homebrew
-install homebrew
-
-### Install pyenv
-
-### install prepare: ./husky/prepare
-
-# PythonDefaultProject
-Python Default to use for new Projects
-
-pytest: just name file _test.py
+![result](images/result.png)
 
 
-poetry run python poetry-update.py -> build an npm package
+## Trouble Shooting
 
+make sure to install the desired python version with the ´--enable-framework´ flag set.
+```bash
 
+    PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.9.13
 
-## Pre Commit
+```
 
-**[General](https://github.com/pre-commit/pre-commit-hooks)**
-Repo: [https://github.com/pre-commit/pre-commit-hooks](https://github.com/pre-commit/pre-commit-hooks)
+scikit learn errors see
+[Stackoverflow](https://stackoverflow.com/questions/68620927/installing-scipy-and-scikit-learn-on-apple-m1)
 
-Some out-of-the-box hooks for pre-commit.
+```bash
+    brew install openblas
+    export OPENBLAS=$(/opt/homebrew/bin/brew --prefix openblas)
+    export CFLAGS="-falign-functions=8 ${CFLAGS}"
+```
 
-
-
-
-## TODO
-- [ ] add a script that automatically creates the structure needed for the project
-    - The script should be able to init poetry with the standard packages needed for the pre-commit hook
-    - The script should install husky if needed
-    - The script should differentiate between different needs for the project (e.g. notebook, code)
-    - The script should be able to select the pre-commit hook
-- [ ] add dependbot
+optionally: add exports into `.zshrc` or `.bashrc`, also add recommended one if wanted.
